@@ -1,0 +1,30 @@
+# encriptador-transformador
+
+Contenido
+Contine 2 scripts
+-file_encryptor.py permite encriptar y desencriptar archivos 
+-file_video_converter.py permite transformar archivos a video tipo ruido de tv y tambien recuperarlos a partir de los videos
+
+Objetivos
+Con la idea de usar youtube como repositorio de archivos privado se busca crear una aplicacion que sea capaz de convertir cualquier tipo de archivo a video y usar youtube como almacenamiento personal tipo Cloud
+encriptandolos para proteger la informacion que ellos contengan
+
+Limitaciones
+-Tamaños de archivos a encriptar con la libreria fernet de python que se usa para la encriptacion de archivos carga todo el archivo en memoria por lo que es un problema si se posee RAM limitada, se ha intendato hacerlo por bloques (chunks) pero este proceso corrompe la secuencia de encriptacion
+-Formatos de compresion el objetivo de usar youtube como Cloud para archivos es de momento fallido ya que la compresion que realiza en el video corrompe el mismo y no es posible recuperar el archivo inicial despuies de redescargarlo de youtube
+-Tamaño de video final la encriptacion añade volumen al archivo final, igual sucede al convertirlo a video porque estoy usando FFV1 que es un codec sin perdida entonces el video .avi que produce posee un tamaño considerable
+
+Recomendaciones de Uso
+-Comprimir la carpeta en secciones de un volumen adecuado para la RAM disponible (ejemplo.rar.part1 = 1.5Gb para RAM=16GB funciona bien)
+-Instalar librerias a usar ambos scripts
+-Encriptar con file_encryptor.py
+-Guardar las .keys en un lugar seguro o subirlas a tu lugar de almacenaje en linea favorito
+-Transformar a video con file_video_converter.py
+-Subir el archivo al lugar de almacenaje favorito (verifica que no comprima el video, telegram es una buena opción)
+
+Cosas a mejorar
+- Se buscará solucionar el problema de corrupcion por particion de chucks para no tener que fracmentar el archivo al comprimirlo
+- Si de todos modos se debe particionar el archivo para poder encriptarlo correctamente se tratará de generar un unico video con los elementos encriptados particionados para construir un unico archivo a almacenar
+- Se pretende cambiar el tamaño del pixel para sortear el problema de compresion de youtube
+- Suprimir reductos, una vez un archivo se transforma a otro se desea conservar unicamente el nuevo archivo transformado y eliminar el anterior para evitar el uso doble o triple del almacenamiento en memoria
+- Proceso automatico, hacer la encriptacion y transformacion a video en un solo proceso y viceversa
