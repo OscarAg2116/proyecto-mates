@@ -1,0 +1,12 @@
+# Entornos virtuales
+.venv/
+.myvenv/
+myenv/
+
+
+# Claves SSH
+.ssh/
+
+# Archivos específicos de la IDE
+.vscode/
+
